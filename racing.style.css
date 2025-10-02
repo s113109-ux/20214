@@ -1,0 +1,146 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #333;
+    margin: 0;
+    overflow: hidden;
+}
+
+#game-container {
+    position: relative;
+    width: 400px;
+    height: 600px;
+    background-color: #777;
+    overflow: hidden;
+    border: 5px solid #fff;
+}
+
+#road {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    background-image: 
+        repeating-linear-gradient(to bottom, #ffc107 0px, #ffc107 20px, transparent 20px, transparent 40px),
+        repeating-linear-gradient(to bottom, #ffc107 0px, #ffc107 20px, transparent 20px, transparent 40px),
+        repeating-linear-gradient(to bottom, #ffc107 0px, #ffc107 20px, transparent 20px, transparent 40px);
+    background-repeat: repeat-y;
+    background-position: 100px 0, 200px 0, 300px 0;
+    animation: moveRoad 2s linear infinite;
+}
+
+@keyframes moveRoad {
+    from {
+        transform: translateY(-100px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+#player-car {
+    position: absolute;
+    width: 50px;
+    height: 80px;
+    background-color: white;
+    bottom: 20px;
+    left: 175px;
+    z-index: 2;
+}
+
+#player-car::before, #player-car::after {
+    content: '';
+    position: absolute;
+    background-color: red;
+}
+
+#player-car::before {
+    width: 20px;
+    height: 40px;
+    top: 20px;
+    left: 15px;
+}
+
+#player-car::after {
+    width: 40px;
+    height: 20px;
+    top: 30px;
+    left: 5px;
+}
+
+.obstacle {
+    position: absolute;
+    z-index: 1;
+}
+
+.oncoming-car {
+    width: 50px;
+    height: 80px;
+    background-color: blue;
+}
+
+.car {
+    width: 50px;
+    height: 80px;
+    background-color: green;
+}
+
+.stone {
+    width: 30px;
+    height: 30px;
+    background-color: grey;
+    border-radius: 50%;
+}
+
+.truck {
+    width: 70px;
+    height: 120px;
+    background-color: brown;
+}
+
+#score {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    font-family: sans-serif;
+    color: #fff;
+    z-index: 3;
+}
+
+#boom {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100px;
+    font-family: sans-serif;
+    color: orange;
+    z-index: 4;
+    display: none; /* Hidden by default */
+}
+
+#game-over {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+    font-family: sans-serif;
+    color: red;
+    z-index: 4;
+    display: none; /* Hidden by default */
+}
+
+#restart-button {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    padding: 10px 20px;
+    z-index: 4;
+    display: none; /* Hidden by default */
+}
